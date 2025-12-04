@@ -6,6 +6,6 @@ int main() {
     cout << "Perpustakaan Mini" << endl;
     cout << "1. Pinjaman" << endl;
     cout << "2. Tambah buku" << endl;
-
+    cout << "3.  hapus buku " << endl;
     return 0;
 }
