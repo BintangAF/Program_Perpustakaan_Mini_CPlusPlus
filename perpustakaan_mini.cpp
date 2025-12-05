@@ -21,10 +21,17 @@ struct Buku {
 
 
 
+// fungsi nyari buku
+
+
+
 int main() {
 
     Buku buku[100];
     int jumlahData = 0;
+
+    // load data 
+
     int pilihan = 0;
     
     cout << "Perpustakaan Mini" << endl;
