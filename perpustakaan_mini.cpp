@@ -15,7 +15,7 @@ struct Buku {
 };
 
 // Prototype Fungsi
-void loaddata(Buku buku[], int&jumlah);
+void loadData(Buku buku[], int &jumlah);
 void simpanDataOtomatis(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
@@ -28,7 +28,7 @@ int main() {
     Buku buku[100];
     int jumlahData = 0;
 
-    loaddata (buku, jumlahData);
+    loadData(buku, jumlahData);
 
     int pilihan = 0;
     
@@ -82,9 +82,8 @@ int main() {
 
 // Inisialisasi Fungsi -------------------------
 
-void loaddata(Buku buku[], int&jumlah) {
-    ifstream file("data_buku.txt");
-    jumlah = 0;
+void loadData(Buku buku[], int &jumlah) {
+    ifstream file("data_buku.txt");    
 
     if (!file.is_open()){
         return;
