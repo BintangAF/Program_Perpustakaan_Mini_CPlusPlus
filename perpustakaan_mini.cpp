@@ -162,26 +162,26 @@ void tampildata(Buku buku[], int jumlahdata) {
 
 void tambahbuku(Buku *buku, int &jumlahdata) {
     cout << "\nMasukan ID Buku: ";
-    getline(cin, buku[jumlahdata].id);
+    getline(cin, buku->id);
 
     cout << "Masukkan Judul Buku: ";
-    getline(cin, buku[jumlahdata].judul);
+    getline(cin, buku->judul);
 
     cout << "Masukkan Pengarang: ";
-    getline(cin, buku[jumlahdata].pengarang);
+    getline(cin, buku->pengarang);
 
     cout << "Masukkan Penerbit: ";
-    getline(cin, buku[jumlahdata].penerbit);
+    getline(cin, buku->penerbit);
 
     cout << "Masukkan Tahun Terbit: ";
-    cin >> buku[jumlahdata].tahunTerbit;
+    cin >> buku->tahunTerbit;
     cin.ignore();
 
     cout << "Masukkan Genre: ";
-    getline(cin, buku[jumlahdata].genre);
+    getline(cin, buku->genre);
 
     cout << "Masukkan Stok Buku: ";
-    cin >> buku[jumlahdata].stok;
+    cin >> buku->stok;
     cin.ignore();
 
     jumlahdata++;
