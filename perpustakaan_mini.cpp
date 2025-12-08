@@ -15,7 +15,7 @@ struct Buku {
 };
 
 // Prototype Fungsi
-void loaddata(Buku buku[], int&jumlah);
+void loadData(Buku buku[], int &jumlah);
 void simpanDataOtomatis(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
@@ -29,7 +29,7 @@ int main() {
     Buku buku[100];
     int jumlahData = 0;
 
-    loaddata (buku, jumlahData);
+    loadData(buku, jumlahData);
 
     int pilihan = 0;
     
@@ -83,29 +83,31 @@ int main() {
 
 // Inisialisasi Fungsi -------------------------
 
-void loaddata(Buku buku[], int&jumlah) {
-    ifstream file("data_buku.txt");
-    jumlah = 0;
+void loadData(Buku buku[], int &jumlah) {
+    ifstream file("data_buku.txt");    
 
     if (!file.is_open()){
+        cout << "File tidak ditemukan atau gagal dibuka!" << endl;
         return;
     }
-    while (!file.eof()) {
-        Buku b;
-        getline(file, b.id);
-        if (b.id == "") break;
+    while (!file.eof()) {        
+        string tahunStr, stokStr;
+        getline(file, buku[jumlah].id, '|');
+        if (buku[jumlah].id == "") break;
 
-        getline(file, b.judul);
-        getline(file, b.pengarang);
-        getline(file, b.penerbit);
-        file>> b.tahunTerbit;
-        getline(file, b.genre);
-        file>> b.stok;
-        file.ignore();
+        getline(file, buku[jumlah].judul, '|');
+        getline(file, buku[jumlah].pengarang, '|');
+        getline(file, buku[jumlah].penerbit, '|');
+        getline(file, tahunStr, '|');        
+        getline(file, buku[jumlah].genre, '|');
+        getline(file, stokStr);                        
 
-        buku[jumlah] = b;
+        buku[jumlah].tahunTerbit = stoi(tahunStr);
+        buku[jumlah].stok = stoi(stokStr);
+
         jumlah++;
     }
+    file.close();
 }
 
 // fungsi simpan otomatis
