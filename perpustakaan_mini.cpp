@@ -161,8 +161,7 @@ void tampildata(Buku buku[], int jumlahdata) {
 }
 
 void tambahbuku(Buku *buku, int &jumlahdata) {
-    cout << "\nMasukan ID Buku: ";
-    getline(cin, buku->id);
+    buku->id = generateId(jumlahdata);
 
     cout << "Masukkan Judul Buku: ";
     getline(cin, buku->judul);
