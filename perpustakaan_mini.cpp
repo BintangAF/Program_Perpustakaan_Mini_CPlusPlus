@@ -22,7 +22,7 @@ void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void cariNamaBuku(Buku buku[], int &jumlah);
 
-
+string generateId(int &jumlahData);
 
 int main() {
 
@@ -218,3 +218,8 @@ void cariNamaBuku(Buku buku[], int &jumlah) {
     }
 }
 
+string generateId(int &jumlahData) {
+    stringstream ss;
+    ss << "B" << setw(3) << setfill('0') << jumlahData + 1;
+    return ss.str();
+}
