@@ -18,6 +18,7 @@ struct Buku {
 // Contoh int namaFungsi(int x, string y);
 // Masukkan kode nya dibawah ini
 
+void loaddata(Buku buku[], int&jumlah);
 void simpanDataOtomatis(Buku buku[], int jumlah);
 
 
