@@ -20,6 +20,7 @@ void simpanDataOtomatis(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
+void carinamabuku(Buku buku[], int jumlah);
 
 
 
@@ -55,7 +56,7 @@ int main() {
             cout << "Hapus Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
             
         } else if(pilihan == 5){
-            cout << "Cari Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
+            void carinamabuku(Buku buku[], int jumlah);
             
         } else if(pilihan == 6){
             cout << "Pinjam Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
@@ -185,4 +186,34 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
     cout << "Buku berhasil ditambahkan!" << endl;
 }
 
+
+void carinamabuku(Buku buku[], int jumlah) {
+    cin.ignore();
+    string cariNama;
+    cout << "Masukkan Nama Buku yang dicari: ";
+    getline(cin, cariNama);
+
+    bool ditemukan = false;
+
+    cout << "Hasil Pencarian: " << endl;
+
+    for (int i = 0; i < jumlah; i++) {
+       
+        if (buku[i].judul.find(cariNama) != string::npos) {
+            cout << "ID                : " << buku[i].id << endl;
+            cout << "Judul             : " << buku[i].judul << endl;
+            cout << "Pengarang         : " << buku[i].pengarang << endl;
+            cout << "Penerbit          : " << buku[i].penerbit << endl;
+            cout << "Tahun Terbit      : " << buku[i].tahunTerbit << endl;
+            cout << "Genre             : " << buku[i].genre << endl;
+            cout << "Stok              : " << buku[i].stok << endl;
+            
+            ditemukan = true;
+        }
+    }
+
+    if (!ditemukan) {
+        cout << "Tidak ada Buku yang mengandung nama '" << cariNama << endl;
+    }
+}
 
