@@ -15,9 +15,36 @@ struct Buku {
 };
 
 // Prototipe Fungsi ---------------------------------
+void simpanDataOtomatis(Buku buku[], int jumlah);
 // Contoh int namaFungsi(int x, string y);
 
 // Masukkan kode nya dibawah ini
+
+
+// fungsi simpan otomatis
+void simpanDataOtomatis(Buku buku[], int jumlah) {
+    ofstream file("data_buku.txt");
+
+    if (!file) {
+        cout << "Gagal membuka file untuk menyimpan data otomatis!" << endl;
+        return;
+    }
+
+    for (int i = 0; i < jumlah; i++) {
+        file << buku[i].id << "|"
+             << buku[i].judul << "|"
+             << buku[i].pengarang << "|"
+             << buku[i].penerbit << "|"
+             << buku[i].tahunTerbit << "|"
+             << buku[i].genre << "|"
+             << buku[i].stok << endl;
+    }
+
+    file.close();
+    cout << "\n(✓) Data otomatis disimpan sebelum program keluar.\n";
+}
+
+
 
 // fungsi nyari buku
 
@@ -75,6 +102,8 @@ int main() {
         }
         
     } while (pilihan != 9);
+
+    simpanDataOtomatis(buku, jumlahData);
     
     return 0;
 }
