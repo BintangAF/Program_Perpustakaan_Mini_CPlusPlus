@@ -20,7 +20,7 @@ void simpanDataOtomatis(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
-void carinamabuku(Buku buku[], int jumlah);
+void cariNamaBuku(Buku buku[], int &jumlah);
 
 
 
@@ -56,7 +56,7 @@ int main() {
             cout << "Hapus Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
             
         } else if(pilihan == 5){
-            void carinamabuku(Buku buku[], int jumlah);
+            cariNamaBuku(buku, jumlahData);
             
         } else if(pilihan == 6){
             cout << "Pinjam Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
@@ -189,8 +189,7 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
 }
 
 
-void carinamabuku(Buku buku[], int jumlah) {
-    cin.ignore();
+void cariNamaBuku(Buku buku[], int &jumlah) {    
     string cariNama;
     cout << "Masukkan Nama Buku yang dicari: ";
     getline(cin, cariNama);
