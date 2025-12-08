@@ -19,8 +19,6 @@ struct Buku {
 
 // Masukkan kode nya dibawah ini
 
-
-
 // fungsi nyari buku
 
 
@@ -30,7 +28,7 @@ int main() {
     Buku buku[100];
     int jumlahData = 0;
 
-    // load data 
+    loaddata (buku, jumlahData);
 
     int pilihan = 0;
     
@@ -91,3 +89,29 @@ int main() {
 // }
 
 // Masukkan kodenya dibawah ini
+
+void loaddata(Buku buku[], int&jumlah) {
+    ifstream file("data_buku.txt");
+    jumlah = 0;
+
+    if (!file.is_open()){
+        return;
+    }
+    while (!file.eof()) {
+        Buku b;
+        getline(file, b.id);
+        if (b.id == "") break;
+
+        getline(file, b.judul);
+        getline(file, b.pengarang);
+        getline(file, b.penerbit);
+        file>> b.tahunTerbit;
+        getline(file, b.genre);
+        file>> b.stok;
+        file.ignore();
+
+        buku[jumlah] = b;
+        jumlah++;
+    }
+
+}
