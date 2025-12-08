@@ -14,17 +14,13 @@ struct Buku {
     int stok;
 };
 
-// Prototipe Fungsi ---------------------------------
-// Contoh int namaFungsi(int x, string y);
-// Masukkan kode nya dibawah ini
-
+// Prototype Fungsi
 void loaddata(Buku buku[], int&jumlah);
 void simpanDataOtomatis(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
 
-// fungsi nyari buku
 
 
 int main() {
@@ -41,17 +37,16 @@ int main() {
     cout << "2. Tambah buku" << endl;
     cout << "4. Test" << endl;
     
-    do
-    {
+    do {
         cout << "Masukkan pilihan: ";
         cin >> pilihan;
         cin.ignore();
 
         if(pilihan == 1){
-        tampildata(buku, jumlahData);
+            tampildata(buku, jumlahData);
             
         } else if(pilihan == 2) {
-        tambahbuku(&buku[jumlahData], jumlahData);
+            tambahbuku(&buku[jumlahData], jumlahData);
             
         } else if(pilihan == 3) {
             cout << "Edit Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
@@ -86,15 +81,6 @@ int main() {
 }
 
 // Inisialisasi Fungsi -------------------------
-// Contoh
-// int total(int a, int b) {
-//     return a + b;
-// }
-// void tambahBuku() {
-//     cout << "Tambah Buku" << endl;
-// }
-
-// Masukkan kodenya dibawah ini
 
 void loaddata(Buku buku[], int&jumlah) {
     ifstream file("data_buku.txt");
@@ -174,24 +160,29 @@ void tampildata(Buku buku[], int jumlahdata) {
 void tambahbuku(Buku *buku, int &jumlahdata) {
     cout << "\nMasukan ID Buku: ";
     getline(cin, buku[jumlahdata].id);
+
     cout << "Masukkan Judul Buku: ";
     getline(cin, buku[jumlahdata].judul);
+
     cout << "Masukkan Pengarang: ";
     getline(cin, buku[jumlahdata].pengarang);
+
     cout << "Masukkan Penerbit: ";
     getline(cin, buku[jumlahdata].penerbit);
+
     cout << "Masukkan Tahun Terbit: ";
     cin >> buku[jumlahdata].tahunTerbit;
     cin.ignore();
+
     cout << "Masukkan Genre: ";
     getline(cin, buku[jumlahdata].genre);
+
     cout << "Masukkan Stok Buku: ";
     cin >> buku[jumlahdata].stok;
     cin.ignore();
 
     jumlahdata++;
     cout << "Buku berhasil ditambahkan!" << endl;
-
 }
 
 
