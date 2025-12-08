@@ -21,6 +21,8 @@ struct Buku {
 void loaddata(Buku buku[], int&jumlah);
 void simpanDataOtomatis(Buku buku[], int jumlah);
 
+void tampildata(Buku buku[], int jumlahdata);
+void tambahbuku(Buku *buku, int &jumlahdata);
 
 // fungsi nyari buku
 
@@ -46,10 +48,10 @@ int main() {
         cin.ignore();
 
         if(pilihan == 1){
-            cout << "Tampilkan Daftar Buku" << endl; // hapus ini jika kalian mengisi kondisi ini 
+        tampildata(buku, jumlahData);
             
         } else if(pilihan == 2) {
-            cout << "Tambah Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
+        tambahbuku(&buku[jumlahData], jumlahData);
             
         } else if(pilihan == 3) {
             cout << "Edit Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
@@ -142,5 +144,54 @@ void simpanDataOtomatis(Buku buku[], int jumlah) {
     cout << "\n(✓) Data otomatis disimpan sebelum program keluar.\n";
 }
 
+void tampildata(Buku buku[], int jumlahdata) {
+    if(jumlahdata == 0){
+        cout << "tidak ada data buku!" << endl;
+        return;
+
+    }
+
+    cout << "\nDaftar Buku:" << endl;
+    cout << left << setw(10) << "ID"
+         << setw(20) << "judul"
+         << setw(20) << "pengarang"
+         << setw(20) << "penerbit"
+         << setw(10) << "tahun"
+         << setw(15) << "genre"
+         << setw(5) << "stok" << endl;
+
+    for(int i=0; i<jumlahdata; i++){
+        cout << setw(10) << buku[i].id
+             << setw(20) << buku[i].judul
+             << setw(20) << buku[i].pengarang
+             << setw(20) << buku[i].penerbit
+             << setw(10) << buku[i].tahunTerbit
+             << setw(15) << buku[i].genre
+             << setw(5) << buku[i].stok << endl;
+    }
+}
+
+void tambahbuku(Buku *buku, int &jumlahdata) {
+    cout << "\nMasukan ID Buku: ";
+    getline(cin, buku[jumlahdata].id);
+    cout << "Masukkan Judul Buku: ";
+    getline(cin, buku[jumlahdata].judul);
+    cout << "Masukkan Pengarang: ";
+    getline(cin, buku[jumlahdata].pengarang);
+    cout << "Masukkan Penerbit: ";
+    getline(cin, buku[jumlahdata].penerbit);
+    cout << "Masukkan Tahun Terbit: ";
+    cin >> buku[jumlahdata].tahunTerbit;
+    cin.ignore();
+    cout << "Masukkan Genre: ";
+    getline(cin, buku[jumlahdata].genre);
+    cout << "Masukkan Stok Buku: ";
+    cin >> buku[jumlahdata].stok;
+    cin.ignore();
+
+    jumlahdata++;
+    cout << "Buku berhasil ditambahkan!" << endl;
+
+}
 
 
