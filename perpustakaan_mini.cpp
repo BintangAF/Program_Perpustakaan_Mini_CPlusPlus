@@ -394,9 +394,16 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
 
     pinjam[jumlahPinjam].id = generateIdPinjaman(jumlahPinjam);
     pinjam[jumlahPinjam].idBuku = idBuku;
+    
+    cout << "Masukkan nama peminjam: ";
     getline(cin, pinjam[jumlahPinjam].namaPeminjam);
+    
+    cout << "Masukkan tanggal pinjam (DD/MM/YYYY): ";
     getline(cin, pinjam[jumlahPinjam].tanggalPinjam);
+    
+    cout << "Masukkan tanggal kembali (DD/MM/YYYY): ";
     getline(cin, pinjam[jumlahPinjam].tanggalKembali);
+    
     jumlahPinjam++;
     cout << "Buku " << buku[index].judul << " berhasil dipinjam!" << endl;
 }
