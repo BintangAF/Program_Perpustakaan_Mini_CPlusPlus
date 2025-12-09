@@ -65,7 +65,8 @@ int main() {
             cout << "Kembalikan Buku" << endl; // hapus ini jika kalian mengisi kondisi ini 
 
         } else if(pilihan == 8){
-            cout << "Simpan Data" << endl; // hapus ini jika kalian mengisi kondisi ini
+            // simpan data manual
+            simpanData(buku, jumlahData);
         
         } else if(pilihan == 9){
             cout << "Keluar" << endl; // hapus ini jika kalian mengisi kondisi ini
