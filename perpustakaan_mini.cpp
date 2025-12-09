@@ -97,6 +97,9 @@ int main() {
         } else if(pilihan == 9){
             simpanDataPinjaman(pinjaman, jumlahPinjaman);            
             
+        } else if(pilihan == 10){
+            cout << "\nTerima kasih!" << endl;
+
         } else {
             cout << "Pilihan tidak tersedia" << endl;
         }
@@ -104,8 +107,7 @@ int main() {
     } while (pilihan != 10);    
     
     simpanDataBuku(buku, jumlahData);
-    simpanDataPinjaman(pinjaman, jumlahPinjaman);            
-    cout << "Terima kasih!" << endl;
+    simpanDataPinjaman(pinjaman, jumlahPinjaman);                
 
     return 0;
 }
