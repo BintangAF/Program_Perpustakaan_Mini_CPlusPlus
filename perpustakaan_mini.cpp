@@ -25,6 +25,7 @@ struct Pinjaman {
 // Prototype Fungsi
 void loadData(Buku buku[], int &jumlah, Pinjaman pinjaman[], int &jumlahPinjaman);
 void simpanData(Buku buku[], int jumlah);
+void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
@@ -175,6 +176,26 @@ void simpanData(Buku buku[], int jumlah) {
 
     file.close();    
     cout << "\nData telah tersimpan.\n";
+}
+
+void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah) {
+     ofstream file("data_pinjaman.txt");
+
+    if (!file) {
+        cout << "Gagal membuka file data_pinjaman.txt untuk menyimpan data!" << endl;
+        return;
+    }
+
+    for (int i = 0; i < jumlah; i++) {
+        file << pinjaman[i].id << "|"
+             << pinjaman[i].idBuku << "|"
+             << pinjaman[i].namaPeminjam << "|"
+             << pinjaman[i].tanggalPinjam << "|"
+             << pinjaman[i].tanggalKembali << endl;
+    }
+
+    file.close();    
+    cout << "\nData pinjaman telah tersimpan.\n";
 }
 
 void tampildata(Buku buku[], int jumlahdata) {
