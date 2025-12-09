@@ -28,6 +28,7 @@ void loadDataPinjaman(Pinjaman pinjaman[], int &jumlahPinjaman);
 void simpanDataBuku(Buku buku[], int &jumlahBuku);
 void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah);
 
+void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], int &jumlahPinjaman);
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
@@ -87,7 +88,7 @@ int main() {
             cariNamaBuku(buku, jumlahData);
             
         } else if(pilihan == 6){
-            // 
+            tampilkanDataPinjaman(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 7){
             pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
@@ -372,6 +373,36 @@ void cariNamaBuku(Buku buku[], int &jumlah) {
     if (!ditemukan) {
         cout << "Tidak ada Buku yang mengandung nama '" << cariNama << endl;
     }
+}
+
+void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], int &jumlahPinjaman) {
+    if(jumlahPinjaman == 0){
+        cout << "tidak ada data pinjaman!" << endl;
+        return;
+    }
+
+    cout << "\nDaftar Pinjaman:" << endl;
+    cout << left << setw(10) << "ID"
+         << setw(10) << "ID Buku"
+         << setw(20) << "Judul Buku"
+         << setw(20) << "Nama Peminjam"
+         << setw(20) << "Tanggal Pinjam"
+         << setw(10) << "Tanggal Kembali" << endl;
+
+    for(int i = 0; i < jumlahBuku; i++) {
+        for(int j = 0; j < jumlahPinjaman; j++) {
+            if(buku[i].id == pinjaman[j].idBuku) {
+                cout << setw(10) << pinjaman[j].id
+                << setw(10) << pinjaman[j].idBuku 
+                << setw(20) << buku[i].judul 
+                << setw(20) << pinjaman[j].namaPeminjam 
+                << setw(20) << pinjaman[j].tanggalPinjam 
+                << setw(10) << pinjaman[j].tanggalKembali << endl;
+            }
+        }
+    }
+    
+    
 }
 
 void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinjam) {
