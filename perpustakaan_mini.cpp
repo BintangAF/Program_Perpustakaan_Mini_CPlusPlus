@@ -34,6 +34,7 @@ void cariNamaBuku(Buku buku[], int &jumlah);
 void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
 
 string generateId(int &jumlahData);
+string generateIdPinjam(int &jumlahPinjaman);
 
 int main() {
 
@@ -339,5 +340,11 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
 string generateId(int &jumlahData) {
     stringstream ss;
     ss << "B" << setw(3) << setfill('0') << jumlahData + 1;
+    return ss.str();
+}
+
+string generateIdPinjaman(int &jumlahPinjaman) {
+    stringstream ss;
+    ss << "P" << setw(3) << setfill('0') << jumlahPinjaman + 1;
     return ss.str();
 }
