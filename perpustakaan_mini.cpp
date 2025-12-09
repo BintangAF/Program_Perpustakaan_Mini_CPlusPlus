@@ -17,6 +17,7 @@ struct Buku {
 struct Pinjaman {
     string id;
     string idBuku;    
+    string namaPeminjam;    
     string tanggalPinjam;
     string tanggalKembali;
 };
