@@ -59,11 +59,12 @@ int main() {
     cout << "3. Edit Buku" << endl;
     cout << "4. Hapus Buku" << endl;
     cout << "5. Cari Nama Buku" << endl;
-    cout << "6. Pinjam Buku" << endl;
-    cout << "7. Kembalikan Buku" << endl;
-    cout << "8. Simpan Data Buku" << endl;
-    cout << "9. Simpan Data Pinjaman" << endl;
-    cout << "10. Keluar Program" << endl;
+    cout << "6. Tampilkan Data Pinjaman" << endl;
+    cout << "7. Pinjam Buku" << endl;
+    cout << "8. Kembalikan Buku" << endl;
+    cout << "9. Simpan Data Buku" << endl;
+    cout << "10. Simpan Data Pinjaman" << endl;
+    cout << "11. Keluar Program" << endl;
     
     do {
         cout << "Masukkan pilihan: ";
@@ -86,25 +87,28 @@ int main() {
             cariNamaBuku(buku, jumlahData);
             
         } else if(pilihan == 6){
-            pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
+            // 
             
         } else if(pilihan == 7){
+            pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
+            
+        } else if(pilihan == 8){
             cout << "Kembalikan Buku" << endl; // hapus ini jika kalian mengisi kondisi ini 
 
-        } else if(pilihan == 8){
+        } else if(pilihan == 9){
             simpanDataBuku(buku, jumlahData);
             
-        } else if(pilihan == 9){
+        } else if(pilihan == 10){
             simpanDataPinjaman(pinjaman, jumlahPinjaman);            
             
-        } else if(pilihan == 10){
+        } else if(pilihan == 11){
             cout << "\nTerima kasih!" << endl;
 
         } else {
             cout << "Pilihan tidak tersedia" << endl;
         }
         
-    } while (pilihan != 10);    
+    } while (pilihan != 11);    
     
     simpanDataBuku(buku, jumlahData);
     simpanDataPinjaman(pinjaman, jumlahPinjaman);                
