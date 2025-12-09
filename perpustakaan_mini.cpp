@@ -37,6 +37,8 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPi
 string generateId(int &jumlahData);
 string generateIdPinjam(int &jumlahPinjaman);
 
+
+
 int main() {
 
     Buku buku[100];
@@ -49,9 +51,14 @@ int main() {
     int pilihan = 0;
     
     cout << "Perpustakaan Mini" << endl;
-    cout << "1. Pinjaman" << endl;
-    cout << "2. Tambah buku" << endl;
-    cout << "4. Test" << endl;
+    cout << "1. Tampilkan Buku" << endl;
+    cout << "2. Tambahkan Buku" << endl;
+    cout << "4. Edit Buku" << endl;
+    cout << "5. Cari Nama Buku" << endl;
+    cout << "6. Pinjam Buku" << endl;
+    cout << "7. Kembalikan Buku" << endl;
+    cout << "8. Simpan Data" << endl;
+    cout << "9. Keluar Program" << endl;
     
     do {
         cout << "Masukkan pilihan: ";
