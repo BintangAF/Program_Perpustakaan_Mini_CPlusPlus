@@ -24,7 +24,7 @@ struct Pinjaman {
 
 // Prototype Fungsi
 void loadData(Buku buku[], int &jumlah, Pinjaman pinjaman[], int &jumlahPinjaman);
-void simpanData(Buku buku[], int jumlah);
+void simpanDataBuku(Buku buku[], int &jumlahBuku);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
@@ -88,11 +88,11 @@ int main() {
 
         } else if(pilihan == 8){
             // simpan data manual
-            simpanData(buku, jumlahData);
+            simpanDataBuku(buku, jumlahData);
         
         } else if(pilihan == 9){
             // Simpan data otomatis ketika program berakhir
-            simpanData(buku, jumlahData);            
+            simpanDataBuku(buku, jumlahData);            
             cout << "Terima kasih!" << endl;
 
         } else {
@@ -155,7 +155,7 @@ void loadData(Buku buku[], int &jumlah, Pinjaman pinjaman[], int &jumlahPinjaman
 }
 
 // fungsi simpan data
-void simpanData(Buku buku[], int jumlah) {
+void simpanDataBuku(Buku buku[], int &jumlahBuku) {
     ofstream file("data_buku.txt");
 
     if (!file) {
@@ -163,7 +163,7 @@ void simpanData(Buku buku[], int jumlah) {
         return;
     }
 
-    for (int i = 0; i < jumlah; i++) {
+    for (int i = 0; i < jumlahBuku; i++) {
         file << buku[i].id << "|"
              << buku[i].judul << "|"
              << buku[i].pengarang << "|"
