@@ -188,7 +188,7 @@ void simpanDataBuku(Buku buku[], int &jumlahBuku) {
     }
 
     file.close();    
-    cout << "\nData telah tersimpan.\n";
+    cout << "Data buku telah tersimpan.\n";
 }
 
 void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah) {
@@ -208,7 +208,7 @@ void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah) {
     }
 
     file.close();    
-    cout << "\nData pinjaman telah tersimpan.\n";
+    cout << "Data pinjaman telah tersimpan.\n";
 }
 
 void tampildata(Buku buku[], int jumlahdata) {
