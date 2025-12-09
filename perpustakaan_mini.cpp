@@ -182,7 +182,7 @@ void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah) {
      ofstream file("data_pinjaman.txt");
 
     if (!file) {
-        cout << "Gagal membuka file data_pinjaman.txt untuk menyimpan data!" << endl;
+        cout << "Gagal membuka file data_pinjaman.txt untuk menyimpan data pinjaman!" << endl;
         return;
     }
 
