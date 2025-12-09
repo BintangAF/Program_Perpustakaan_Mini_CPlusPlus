@@ -159,7 +159,7 @@ void simpanDataBuku(Buku buku[], int &jumlahBuku) {
     ofstream file("data_buku.txt");
 
     if (!file) {
-        cout << "Gagal membuka file untuk menyimpan data!" << endl;
+        cout << "Gagal membuka file data_buku.txt untuk menyimpan data buku!" << endl;
         return;
     }
 
