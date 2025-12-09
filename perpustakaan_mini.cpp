@@ -311,10 +311,10 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
     cout << "Masukkan id buku yang ingin dipinjam: ";
     getline(cin, idBuku);
 
-    bool ditemukan = false;
+    int index = -1;
     for(int i = 0; i < jumlahData; i++) {
         if(buku[i].id == idBuku) {            
-            ditemukan = true;
+            index = i;
             if(buku[i].stok < 1){
                 cout << "Buku " << buku[i].judul << " tidak tersedia!" << endl;
                 return;
@@ -323,17 +323,19 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
             }
             break;
         }
-    }
-    if(!ditemukan) {
+    }    
+
+    if(index == -1) {
         cout << "Buku dengan id " << idBuku << " tidak ditemukan!" << endl;
         return;
     }
 
-    // pinjam[jumlahPinjam].id = generateIdPinjaman();
+    pinjam[jumlahPinjam].id = generateIdPinjaman();
     pinjam[jumlahPinjam].idBuku = idBuku;
-    // pinjam[jumlahPinjam].tanggalPinjam = getCurrentDate();
-    pinjam[jumlahPinjam].tanggalKembali = "";
+    getline(cin, pinjam[jumlahPinjam].tanggalPinjam);
+    getline(cin, pinjam[jumlahPinjam].tanggalKembali);
     jumlahPinjam++;
+    cout << "Buku " << buku[index].judul << " berhasil dipinjam!" << endl;
 }
 
 string generateId(int &jumlahData) {
