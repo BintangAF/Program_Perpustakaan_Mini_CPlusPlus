@@ -20,6 +20,7 @@ void simpanData(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
+void editBuku(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 
 string generateId(int &jumlahData);
@@ -50,7 +51,7 @@ int main() {
             tambahbuku(&buku[jumlahData], jumlahData);
             
         } else if(pilihan == 3) {
-            cout << "Edit Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
+            editBuku(buku, jumlahData);
             
         } else if(pilihan == 4) {
             cout << "Hapus Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
@@ -188,6 +189,63 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
     cout << "Buku berhasil ditambahkan!" << endl;
 }
 
+void editBuku(Buku buku[], int &jumlahData) {
+    string cariNama;
+    cout << "Masukkan Nama Buku yang dicari: ";
+    getline(cin, cariNama);    
+    
+    int index = -1;
+    
+    for(int i = 0; i < jumlahData; i++) {
+        if(buku[i].judul.find(cariNama) != string::npos) {
+            index = i;
+            break;
+        }        
+    }
+
+    if(index == -1){
+        cout << "Buku tidak ditemukan!" << endl;
+        return;
+    }
+
+    cout << "Buku ditemukan!" << endl;
+    cout << "Data Buku saat ini" << endl;
+    cout << "ID                : " << buku[index].id << endl;
+    cout << "Judul             : " << buku[index].judul << endl;
+    cout << "Pengarang         : " << buku[index].pengarang << endl;
+    cout << "Penerbit          : " << buku[index].penerbit << endl;
+    cout << "Tahun Terbit      : " << buku[index].tahunTerbit << endl;
+    cout << "Genre             : " << buku[index].genre << endl;
+    cout << "Stok              : " << buku[index].stok << endl;
+
+    string inputBaru;
+
+    cout << "Masukkan judul baru: ";
+    getline(cin, inputBaru);
+    buku[index].judul = (inputBaru.empty()) ? buku[index].judul : inputBaru;
+    
+    cout << "Masukkan pengarang baru: ";
+    getline(cin, inputBaru);
+    buku[index].pengarang = (inputBaru.empty()) ? buku[index].pengarang : inputBaru;
+    
+    cout << "Masukkan penerbit baru: ";
+    getline(cin, inputBaru);
+    buku[index].penerbit = (inputBaru.empty()) ? buku[index].penerbit : inputBaru;
+    
+    cout << "Masukkan tahun terbit baru: ";
+    getline(cin, inputBaru);
+    buku[index].tahunTerbit = (inputBaru.empty()) ? buku[index].tahunTerbit : stoi(inputBaru);
+    
+    cout << "Masukkan genre baru: ";
+    getline(cin, inputBaru);
+    buku[index].genre = (inputBaru.empty()) ? buku[index].genre : inputBaru;
+    
+    cout << "Masukkan stok baru: ";
+    getline(cin, inputBaru);
+    buku[index].stok = (inputBaru.empty()) ? buku[index].stok : stoi(inputBaru);
+
+    cout << "Data Buku telah diperbarui!" << endl;
+}
 
 void cariNamaBuku(Buku buku[], int &jumlah) {    
     string cariNama;
