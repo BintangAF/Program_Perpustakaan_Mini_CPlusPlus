@@ -56,7 +56,8 @@ int main() {
     cout << "------Perpustakaan Mini------" << endl;
     cout << "1. Tampilkan Buku" << endl;
     cout << "2. Tambahkan Buku" << endl;
-    cout << "4. Edit Buku" << endl;
+    cout << "3. Edit Buku" << endl;
+    cout << "4. Hapus Buku" << endl;
     cout << "5. Cari Nama Buku" << endl;
     cout << "6. Pinjam Buku" << endl;
     cout << "7. Kembalikan Buku" << endl;
