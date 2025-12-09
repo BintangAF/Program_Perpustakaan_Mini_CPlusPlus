@@ -53,15 +53,16 @@ int main() {
 
     int pilihan = 0;
     
-    cout << "Perpustakaan Mini" << endl;
+    cout << "------Perpustakaan Mini------" << endl;
     cout << "1. Tampilkan Buku" << endl;
     cout << "2. Tambahkan Buku" << endl;
     cout << "4. Edit Buku" << endl;
     cout << "5. Cari Nama Buku" << endl;
     cout << "6. Pinjam Buku" << endl;
     cout << "7. Kembalikan Buku" << endl;
-    cout << "8. Simpan Data" << endl;
-    cout << "9. Keluar Program" << endl;
+    cout << "8. Simpan Data Buku" << endl;
+    cout << "9. Simpan Data Pinjaman" << endl;
+    cout << "10. Keluar Program" << endl;
     
     do {
         cout << "Masukkan pilihan: ";
@@ -90,20 +91,21 @@ int main() {
             cout << "Kembalikan Buku" << endl; // hapus ini jika kalian mengisi kondisi ini 
 
         } else if(pilihan == 8){
-            // simpan data manual
             simpanDataBuku(buku, jumlahData);
-        
+            
         } else if(pilihan == 9){
-            // Simpan data otomatis ketika program berakhir
-            simpanDataBuku(buku, jumlahData);            
-            cout << "Terima kasih!" << endl;
-
+            simpanDataPinjaman(pinjaman, jumlahPinjaman);            
+            
         } else {
             cout << "Pilihan tidak tersedia" << endl;
         }
         
-    } while (pilihan != 9);    
+    } while (pilihan != 10);    
     
+    simpanDataBuku(buku, jumlahData);
+    simpanDataPinjaman(pinjaman, jumlahPinjaman);            
+    cout << "Terima kasih!" << endl;
+
     return 0;
 }
 
