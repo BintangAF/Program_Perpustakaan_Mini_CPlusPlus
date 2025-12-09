@@ -16,7 +16,7 @@ struct Buku {
 
 // Prototype Fungsi
 void loadData(Buku buku[], int &jumlah);
-void simpanDataOtomatis(Buku buku[], int jumlah);
+void simpanData(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
@@ -76,7 +76,8 @@ int main() {
         
     } while (pilihan != 9);
 
-    simpanDataOtomatis(buku, jumlahData);
+    // Simpan data otomatis ketika program berakhir
+    simpanData(buku, jumlahData);
     
     return 0;
 }
@@ -110,8 +111,8 @@ void loadData(Buku buku[], int &jumlah) {
     file.close();
 }
 
-// fungsi simpan otomatis
-void simpanDataOtomatis(Buku buku[], int jumlah) {
+// fungsi simpan data
+void simpanData(Buku buku[], int jumlah) {
     ofstream file("data_buku.txt");
 
     if (!file) {

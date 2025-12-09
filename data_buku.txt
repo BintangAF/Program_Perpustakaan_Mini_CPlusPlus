@@ -1,3 +1,4 @@
-1|Atomic Habits|James Clear|gramedia|2018|psikologi|10
-2|How to Win Friends|Jameson|gramedia|2020|psikologi|30
-3|The Power of Now|Eckhart Tolle|gramedia|2019|psikologi|20
+B001|Atomic Habits|James Clear|gramedia|2018|psikologi|10
+B002|How to Win Friends|Jameson|gramedia|2020|psikologi|30
+B003|The Power of Now|Eckhart Tolle|gramedia|2019|psikologi|20
+B004|Real Friends|Tamara|gramedia|2013|Psikologi|45
