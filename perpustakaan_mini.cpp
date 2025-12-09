@@ -23,7 +23,7 @@ struct Pinjaman {
 };
 
 // Prototype Fungsi
-void loadData(Buku buku[], int &jumlah);
+void loadData(Buku buku[], int &jumlah, Pinjaman pinjaman[], int &jumlahPinjaman);
 void simpanData(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
@@ -44,7 +44,7 @@ int main() {
     int jumlahData = 0;
     int jumlahPinjaman = 0;
 
-    loadData(buku, jumlahData);
+    loadData(buku, jumlahData, pinjaman, jumlahPinjaman);
 
     int pilihan = 0;
     
@@ -99,31 +99,52 @@ int main() {
 
 // Inisialisasi Fungsi -------------------------
 
-void loadData(Buku buku[], int &jumlah) {
-    ifstream file("data_buku.txt");    
+void loadData(Buku buku[], int &jumlah, Pinjaman pinjaman[], int &jumlahPinjaman) {
+    ifstream fileBuku("data_buku.txt");    
+    ifstream filePinjaman("data_pinjaman.txt");    
 
-    if (!file.is_open()){
-        cout << "File tidak ditemukan atau gagal dibuka!" << endl;
+    if (!fileBuku.is_open()){
+        cout << "File data_buku.txt tidak ditemukan atau gagal dibuka!" << endl;
         return;
     }
-    while (!file.eof()) {        
+
+    if (!filePinjaman.is_open()){
+        cout << "File data_pinjaman.txt tidak ditemukan atau gagal dibuka!" << endl;
+        return;
+    }
+
+    while (!fileBuku.eof()) {        
         string tahunStr, stokStr;
-        getline(file, buku[jumlah].id, '|');
+        getline(fileBuku, buku[jumlah].id, '|');
         if (buku[jumlah].id == "") break;
 
-        getline(file, buku[jumlah].judul, '|');
-        getline(file, buku[jumlah].pengarang, '|');
-        getline(file, buku[jumlah].penerbit, '|');
-        getline(file, tahunStr, '|');        
-        getline(file, buku[jumlah].genre, '|');
-        getline(file, stokStr);                        
+        getline(fileBuku, buku[jumlah].judul, '|');
+        getline(fileBuku, buku[jumlah].pengarang, '|');
+        getline(fileBuku, buku[jumlah].penerbit, '|');
+        getline(fileBuku, tahunStr, '|');        
+        getline(fileBuku, buku[jumlah].genre, '|');
+        getline(fileBuku, stokStr);                        
 
         buku[jumlah].tahunTerbit = stoi(tahunStr);
         buku[jumlah].stok = stoi(stokStr);
 
         jumlah++;
     }
-    file.close();
+
+    fileBuku.close();
+
+    while (!filePinjaman.eof()) {                
+        getline(filePinjaman, pinjaman[jumlahPinjaman].id, '|');
+        if (pinjaman[jumlahPinjaman].id == "") break;
+
+        getline(filePinjaman, pinjaman[jumlahPinjaman].idBuku, '|');
+        getline(filePinjaman, pinjaman[jumlahPinjaman].tanggalPinjam, '|');
+        getline(filePinjaman, pinjaman[jumlahPinjaman].tanggalKembali, '|');
+
+        jumlahPinjaman++;
+    }
+    
+    filePinjaman.close();
 }
 
 // fungsi simpan data
