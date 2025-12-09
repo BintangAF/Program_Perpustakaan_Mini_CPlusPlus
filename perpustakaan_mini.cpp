@@ -31,6 +31,8 @@ void editBuku(Buku buku[], int &jumlahData);
 void hapusBuku(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 
+void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
+
 string generateId(int &jumlahData);
 
 int main() {
@@ -70,7 +72,7 @@ int main() {
             cariNamaBuku(buku, jumlahData);
             
         } else if(pilihan == 6){
-            cout << "Pinjam Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
+            pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 7){
             cout << "Kembalikan Buku" << endl; // hapus ini jika kalian mengisi kondisi ini 
@@ -302,6 +304,36 @@ void cariNamaBuku(Buku buku[], int &jumlah) {
     if (!ditemukan) {
         cout << "Tidak ada Buku yang mengandung nama '" << cariNama << endl;
     }
+}
+
+void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinjam) {
+    string idBuku;
+    cout << "Masukkan id buku yang ingin dipinjam: ";
+    getline(cin, idBuku);
+
+    bool ditemukan = false;
+    for(int i = 0; i < jumlahData; i++) {
+        if(buku[i].id == idBuku) {            
+            ditemukan = true;
+            if(buku[i].stok < 1){
+                cout << "Buku " << buku[i].judul << " tidak tersedia!" << endl;
+                return;
+            } else {
+                buku[i].stok--;
+            }
+            break;
+        }
+    }
+    if(!ditemukan) {
+        cout << "Buku dengan id " << idBuku << " tidak ditemukan!" << endl;
+        return;
+    }
+
+    // pinjam[jumlahPinjam].id = generateIdPinjaman();
+    pinjam[jumlahPinjam].idBuku = idBuku;
+    // pinjam[jumlahPinjam].tanggalPinjam = getCurrentDate();
+    pinjam[jumlahPinjam].tanggalKembali = "";
+    jumlahPinjam++;
 }
 
 string generateId(int &jumlahData) {
