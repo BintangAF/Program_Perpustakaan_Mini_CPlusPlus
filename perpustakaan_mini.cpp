@@ -37,7 +37,7 @@ void cariNamaBuku(Buku buku[], int &jumlah);
 void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
 
 string generateId(int &jumlahData);
-string generateIdPinjam(int &jumlahPinjaman);
+string generateIdPinjaman(int &jumlahPinjaman);
 
 
 
