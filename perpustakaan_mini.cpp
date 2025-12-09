@@ -393,6 +393,7 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
 
     pinjam[jumlahPinjam].id = generateIdPinjaman(jumlahPinjam);
     pinjam[jumlahPinjam].idBuku = idBuku;
+    getline(cin, pinjam[jumlahPinjam].namaPeminjam);
     getline(cin, pinjam[jumlahPinjam].tanggalPinjam);
     getline(cin, pinjam[jumlahPinjam].tanggalKembali);
     jumlahPinjam++;
