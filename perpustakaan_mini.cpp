@@ -69,16 +69,15 @@ int main() {
             simpanData(buku, jumlahData);
         
         } else if(pilihan == 9){
-            cout << "Keluar" << endl; // hapus ini jika kalian mengisi kondisi ini
+            // Simpan data otomatis ketika program berakhir
+            simpanData(buku, jumlahData);            
+            cout << "Terima kasih!" << endl;
 
         } else {
             cout << "Pilihan tidak tersedia" << endl;
         }
         
-    } while (pilihan != 9);
-
-    // Simpan data otomatis ketika program berakhir
-    simpanData(buku, jumlahData);
+    } while (pilihan != 9);    
     
     return 0;
 }
@@ -117,7 +116,7 @@ void simpanData(Buku buku[], int jumlah) {
     ofstream file("data_buku.txt");
 
     if (!file) {
-        cout << "Gagal membuka file untuk menyimpan data otomatis!" << endl;
+        cout << "Gagal membuka file untuk menyimpan data!" << endl;
         return;
     }
 
@@ -131,8 +130,8 @@ void simpanData(Buku buku[], int jumlah) {
              << buku[i].stok << endl;
     }
 
-    file.close();
-    cout << "\n(✓) Data otomatis disimpan sebelum program keluar.\n";
+    file.close();    
+    cout << "\nData telah tersimpan.\n";
 }
 
 void tampildata(Buku buku[], int jumlahdata) {
