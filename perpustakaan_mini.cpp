@@ -14,6 +14,13 @@ struct Buku {
     int stok;
 };
 
+struct Pinjaman {
+    string id;
+    string idBuku;    
+    string tanggalPinjam;
+    string tanggalKembali;
+};
+
 // Prototype Fungsi
 void loadData(Buku buku[], int &jumlah);
 void simpanData(Buku buku[], int jumlah);
@@ -29,7 +36,9 @@ string generateId(int &jumlahData);
 int main() {
 
     Buku buku[100];
+    Pinjaman pinjaman[100];
     int jumlahData = 0;
+    int jumlahPinjaman = 0;
 
     loadData(buku, jumlahData);
 
