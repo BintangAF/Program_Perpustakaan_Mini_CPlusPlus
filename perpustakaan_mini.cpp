@@ -20,6 +20,7 @@ void simpanData(Buku buku[], int jumlah);
 
 void tampildata(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
+void hapusBuku(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 
 string generateId(int &jumlahData);
@@ -53,7 +54,7 @@ int main() {
             cout << "Edit Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
             
         } else if(pilihan == 4) {
-            cout << "Hapus Buku" << endl; // hapus ini jika kalian mengisi kondisi ini
+            hapusBuku(buku, jumlahData);
             
         } else if(pilihan == 5){
             cariNamaBuku(buku, jumlahData);
@@ -186,6 +187,24 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
 
     jumlahdata++;
     cout << "Buku berhasil ditambahkan!" << endl;
+}
+
+void hapusBuku(Buku buku[], int &jumlahData) {
+    string judulBuku;
+    cout << "Masukkan judul buku yang ingin dihapus: ";
+    getline(cin, judulBuku);
+
+    for(int i = 0; i < jumlahData; i++) {
+        if(buku[i].judul == judulBuku) {
+            for(int j = i; j < jumlahData - 1; j++) {
+                buku[j] = buku[j + 1];
+            }
+            jumlahData--;
+            cout << "Buku " << judulBuku << " berhasil dihapus!" << endl;
+            return;
+        }
+    }
+    cout << "Buku " << judulBuku << " yang dicari tidak ditemukan!" << endl;
 }
 
 
