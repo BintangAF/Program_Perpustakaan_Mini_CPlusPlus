@@ -272,6 +272,8 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
     cin >> buku->stok;
     cin.ignore();
 
+    buku->dihapus = false;
+    
     jumlahdata++;
     cout << "Buku berhasil ditambahkan!" << endl;
 }
