@@ -142,7 +142,7 @@ void loadDataBuku(Buku buku[], int &jumlah) {
     }    
 
     while (!file.eof()) {        
-        string tahunStr, stokStr;
+        string tahunStr, stokStr, bolehDipinjamStr, diHapusStr;
         getline(file, buku[jumlah].id, '|');
         if (buku[jumlah].id == "") break;
 
@@ -151,10 +151,14 @@ void loadDataBuku(Buku buku[], int &jumlah) {
         getline(file, buku[jumlah].penerbit, '|');
         getline(file, tahunStr, '|');        
         getline(file, buku[jumlah].genre, '|');
-        getline(file, stokStr);                        
+        getline(file, stokStr, '|');                        
+        getline(file, bolehDipinjamStr, '|');        
+        getline(file, diHapusStr);        
 
         buku[jumlah].tahunTerbit = stoi(tahunStr);
         buku[jumlah].stok = stoi(stokStr);
+        buku[jumlah].bolehDipinjam = stoi(bolehDipinjamStr);
+        buku[jumlah].dihapus = stoi(diHapusStr);                
 
         jumlah++;
     }
