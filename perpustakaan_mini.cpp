@@ -380,9 +380,18 @@ void hapusBukuSementara(Buku buku[], int &jumlahData) {
 
     for(int i = 0; i < jumlahData; i++) {
         if(buku[i].id == idBuku) {
-            buku[i].dihapus = true;
-            cout << "Buku dengan ID " << idBuku << " berhasil dihapus sementara!" << endl;
-            return;
+            char konfirmasi;
+            cout << "Apakah Anda yakin ingin menghapus buku ini sementara? (y/n): ";
+            cin >> konfirmasi;
+            cin.ignore();
+            if(konfirmasi == 'y' || konfirmasi == 'Y') {
+                buku[i].dihapus = true;
+                cout << "Buku dengan ID " << idBuku << " berhasil dihapus sementara!" << endl;
+                return;
+            } else {
+                cout << "Operasi dibatalkan!" << endl;
+                return;
+            }
         }
     }
     cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
