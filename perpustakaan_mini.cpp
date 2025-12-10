@@ -33,7 +33,7 @@ void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], in
 void tampilDataBuku(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
-void hapusBuku(Buku buku[], int &jumlahData);
+void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman);
 void hapusBukuSementara(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 void pulihkanDataBuku(Buku buku[], int &jumlahBuku);
@@ -88,7 +88,7 @@ int main() {
             editBuku(buku, jumlahData);
             
         } else if(pilihan == 4) {
-            hapusBuku(buku, jumlahData);
+            hapusBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 5){
             hapusBukuSementara(buku, jumlahData);
@@ -360,15 +360,24 @@ void editBuku(Buku buku[], int &jumlahData) {
     cout << "Data Buku telah diperbarui!" << endl;
 }
 
-void hapusBuku(Buku buku[], int &jumlahData) {
+void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman) {
     string idBuku;
     cout << "Masukkan ID buku yang ingin dihapus: ";
     getline(cin, idBuku);
 
     for(int i = 0; i < jumlahData; i++) {
         if(buku[i].id == idBuku) {
+            
+            for(int j = 0; j < jumlahPinjaman; j++) {
+                if(pinjaman[j].idBuku == idBuku) {
+                    cout << "Tidak bisa menghapus! Masih ada pinjaman aktif untuk buku ini." << endl;
+                    cout << "Kembalikan semua pinjaman buku ini terlebih dahulu." << endl;
+                    return;
+                }
+            }
+
             char konfirmasi;
-            cout << "Anda yakin? (y/n):";
+            cout << "Anda yakin? (y/n): ";
             cin >> konfirmasi;
             cin.ignore();
 
@@ -457,7 +466,6 @@ void pulihkanDataBuku(Buku buku[], int &jumlahBuku) {
         if(buku[i].id == idBuku) {
             index = i;
             buku[i].dihapus = false;
-            cout << "Buku dengan ID " << idBuku << " berhasil dipulihkan!" << endl;
             break;
         }
     }
