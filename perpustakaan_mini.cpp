@@ -216,7 +216,7 @@ void simpanDataBuku(Buku buku[], int &jumlahBuku) {
              << buku[i].tahunTerbit << "|"
              << buku[i].genre << "|"
              << buku[i].stok << "|"
-             << buku[i].bolehDipinjam
+             << buku[i].bolehDipinjam << "|"
              << buku[i].dihapus << endl;
     }
 
