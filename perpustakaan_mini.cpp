@@ -36,6 +36,7 @@ void hapusBuku(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 
 void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
+void kembalikanBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
 
 string generateId(int &jumlahData);
 string generateIdPinjaman(int &jumlahPinjaman);
@@ -94,7 +95,7 @@ int main() {
             pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 8){
-            cout << "Kembalikan Buku" << endl; // hapus ini jika kalian mengisi kondisi ini 
+            kembalikanBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
 
         } else if(pilihan == 9){
             simpanDataBuku(buku, jumlahData);
@@ -443,6 +444,49 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
     
     jumlahPinjam++;
     cout << "Buku " << buku[index].judul << " berhasil dipinjam!" << endl;
+}
+
+void kembalikanBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinjam) {
+    string idBuku, namaPengembali;
+    cout << "Masukkan id buku yang ingin dikembalikan: ";
+    getline(cin, idBuku);
+    cout << "Masukkan nama peminjam: ";
+    getline(cin, namaPengembali);
+
+    int index = -1;
+    for(int i = 0; i < jumlahData; i++) {
+        if(buku[i].id == idBuku) {            
+            index = i;                              
+            break;
+        }
+    }    
+
+    if(index == -1) {
+        cout << "Buku dengan id " << idBuku << " tidak ditemukan!" << endl;
+        return;
+    }
+
+    int indexPinjam = -1;
+    
+    for(int i = 0; i < jumlahPinjam; i++) {
+        if(pinjam[i].idBuku == idBuku && pinjam[i].namaPeminjam == namaPengembali) {
+            indexPinjam = i;
+            break;
+        }
+    }
+
+    if(indexPinjam == -1) {
+        cout << "Pinjaman dengan id buku " << idBuku << " dan nama peminjam " << namaPengembali << " tidak ditemukan!" << endl;
+        return;
+    }
+    
+    for(int i = indexPinjam; i < jumlahPinjam - 1; i++) {
+        pinjam[i] = pinjam[i + 1];
+    }
+    
+    buku[index].stok++;
+    jumlahPinjam--;
+    cout << "Buku " << buku[index].judul << " berhasil dikembalikan!" << endl;
 }
 
 string generateId(int &jumlahData) {
