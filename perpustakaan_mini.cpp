@@ -165,7 +165,7 @@ void loadDataPinjaman(Pinjaman pinjaman[], int &jumlahPinjaman) {
         getline(file, pinjaman[jumlahPinjaman].idBuku, '|');
         getline(file, pinjaman[jumlahPinjaman].namaPeminjam, '|');
         getline(file, pinjaman[jumlahPinjaman].tanggalPinjam, '|');
-        getline(file, pinjaman[jumlahPinjaman].tanggalKembali, '|');
+        getline(file, pinjaman[jumlahPinjaman].tanggalKembali);
 
         jumlahPinjaman++;
     }
