@@ -356,22 +356,22 @@ void cariNamaBuku(Buku buku[], int &jumlah) {
 
     cout << "Hasil Pencarian: " << endl;
     cout << left << setw(10) << "ID"
-         << setw(20) << "Judul"
+         << setw(25) << "Judul"
          << setw(20) << "Pengarang"
          << setw(20) << "Penerbit"
-         << setw(10) << "Tahun Terbit"
-         << setw(10) << "Genre"
-         << setw(10) << "Stok" << endl;
+         << setw(20) << "Tahun Terbit"
+         << setw(20) << "Genre"
+         << setw(5) << "Stok" << endl;
     
     for (int i = 0; i < jumlah; i++) {       
         if (buku[i].judul.find(cariNama) != string::npos) {
             cout << setw(10) << buku[i].id
-                << setw(20) << buku[i].judul
+                << setw(25) << buku[i].judul
                 << setw(20) << buku[i].pengarang
                 << setw(20) << buku[i].penerbit
-                << setw(10) << buku[i].tahunTerbit
-                << setw(10) << buku[i].genre
-                << setw(10) << buku[i].stok << endl;
+                << setw(20) << buku[i].tahunTerbit
+                << setw(20) << buku[i].genre
+                << setw(5) << buku[i].stok << endl;
             
             ditemukan = true;
         }
