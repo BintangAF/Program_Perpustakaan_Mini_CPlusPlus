@@ -504,7 +504,7 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
 
     int index = -1;
     for(int i = 0; i < jumlahData; i++) {
-        if(buku[i].id == idBuku) {            
+        if(buku[i].id == idBuku && buku[i].dihapus == false) {            
             index = i;
             if(buku[i].stok < 1){
                 cout << "Buku " << buku[i].judul << " tidak tersedia!" << endl;
