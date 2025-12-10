@@ -527,6 +527,11 @@ void pulihkanDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus) {
     int index = -1;
     for(int i = 0; i < jumlahBuku; i++) {
         if(buku[i].id == idBuku) {
+            if(buku[i].dihapus == false) {
+                cout << "Buku ini tidak perlu dipulihkan!" << endl;
+                return;
+            }
+            
             index = i;
             buku[i].dihapus = false;
             jumlahBukuTerhapus++;
