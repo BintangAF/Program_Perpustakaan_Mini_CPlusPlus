@@ -35,7 +35,7 @@ void tampilDataBuku(Buku buku[], int jumlahdata);
 void tampilDataBukuYangDihapus(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
-void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman);
+void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman, int &jumlahBukuTerhapus);
 void setDilarangPinjam(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 void pulihkanDataBuku(Buku buku[], int &jumlahBuku);
@@ -92,7 +92,7 @@ int main() {
             editBuku(buku, jumlahData);
             
         } else if(pilihan == 4) {
-            hapusBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
+            hapusBuku(buku, jumlahData, pinjaman, jumlahPinjaman, jumlahBukuTerhapus);
             
         } else if(pilihan == 5){
             tampilDataBukuYangDihapus(buku, jumlahData, jumlahBukuTerhapus);
@@ -388,7 +388,7 @@ void editBuku(Buku buku[], int &jumlahData) {
     cout << "Data Buku telah diperbarui!" << endl;
 }
 
-void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman) {
+void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman, int &jumlahBukuTerhapus) {
     string idBuku;
     cout << "Masukkan ID buku yang ingin dihapus: ";
     getline(cin, idBuku);
@@ -404,14 +404,19 @@ void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPin
                 }
             }
 
+            if(buku[i].dihapus == true) {
+                cout << "Buku dengan ID " << idBuku << " sudah dihapus!" << endl;
+                return;
+            }
+            
             char konfirmasi;
             cout << "Anda yakin? (y/n): ";
             cin >> konfirmasi;
             cin.ignore();
 
             if(konfirmasi == 'y' || konfirmasi == 'Y') {
-                buku[i].dihapus = true;                
-                jumlahData--;
+                buku[i].dihapus = true;                                
+                jumlahBukuTerhapus++;
                 cout << "Buku dengan ID " << idBuku << " berhasil dihapus!" << endl;
                 return;
             } else {
