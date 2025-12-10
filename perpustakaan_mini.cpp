@@ -272,14 +272,14 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
 }
 
 void editBuku(Buku buku[], int &jumlahData) {
-    string cariNama;
-    cout << "Masukkan Nama Buku yang dicari: ";
-    getline(cin, cariNama);    
+    string idBuku;
+    cout << "Masukkan ID Buku yang ingin diedit: ";
+    getline(cin, idBuku);    
     
     int index = -1;
     
     for(int i = 0; i < jumlahData; i++) {
-        if(buku[i].judul.find(cariNama) != string::npos) {
+        if(buku[i].id == idBuku) {
             index = i;
             break;
         }        
@@ -291,37 +291,51 @@ void editBuku(Buku buku[], int &jumlahData) {
     }
 
     cout << "Buku ditemukan!" << endl;
-    cout << "Data Buku saat ini" << endl;
-    cout << "ID                : " << buku[index].id << endl;
-    cout << "Judul             : " << buku[index].judul << endl;
-    cout << "Pengarang         : " << buku[index].pengarang << endl;
-    cout << "Penerbit          : " << buku[index].penerbit << endl;
-    cout << "Tahun Terbit      : " << buku[index].tahunTerbit << endl;
-    cout << "Genre             : " << buku[index].genre << endl;
-    cout << "Stok              : " << buku[index].stok << endl;
+    cout << "Data Buku saat ini: " << endl;
+    cout << left << setw(10) << "ID"
+        << setw(20) << "Judul" 
+        << setw(20) << "Pengarang"
+        << setw(20) << "Penerbit"
+        << setw(20) << "Tahun Terbit"
+        << setw(20) << "Genre"
+        << setw(5) << "Stok" << endl;
+    
+    cout << setw(10) << buku[index].id
+        << setw(20) << buku[index].judul
+        << setw(20) << buku[index].pengarang
+        << setw(20) << buku[index].penerbit
+        << setw(20) << buku[index].tahunTerbit
+        << setw(20) << buku[index].genre
+        << setw(5) << buku[index].stok << endl;
 
     string inputBaru;
 
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan judul baru: ";
     getline(cin, inputBaru);
     buku[index].judul = (inputBaru.empty()) ? buku[index].judul : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan pengarang baru: ";
     getline(cin, inputBaru);
     buku[index].pengarang = (inputBaru.empty()) ? buku[index].pengarang : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan penerbit baru: ";
     getline(cin, inputBaru);
     buku[index].penerbit = (inputBaru.empty()) ? buku[index].penerbit : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan tahun terbit baru: ";
     getline(cin, inputBaru);
     buku[index].tahunTerbit = (inputBaru.empty()) ? buku[index].tahunTerbit : stoi(inputBaru);
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan genre baru: ";
     getline(cin, inputBaru);
     buku[index].genre = (inputBaru.empty()) ? buku[index].genre : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan stok baru: ";
     getline(cin, inputBaru);
     buku[index].stok = (inputBaru.empty()) ? buku[index].stok : stoi(inputBaru);
