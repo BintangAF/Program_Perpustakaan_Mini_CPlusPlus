@@ -37,6 +37,7 @@ void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
 void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman, int &jumlahBukuTerhapus);
 void setDilarangPinjam(Buku buku[], int &jumlahData);
+void setBolehPinjam(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 void pulihkanDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
 
@@ -68,14 +69,15 @@ int main() {
     cout << "4. Hapus Buku" << endl;
     cout << "5. Tampilkan Buku Yang Dihapus" << endl;
     cout << "6. Atur Buku Dilarang Pinjam" << endl;
-    cout << "7. Pulihkan Data Buku" << endl;
-    cout << "8. Cari Nama Buku" << endl;
-    cout << "9. Tampilkan Data Pinjaman" << endl;
-    cout << "10. Pinjam Buku" << endl;
-    cout << "11. Kembalikan Buku" << endl;
-    cout << "12. Simpan Data Buku" << endl;
-    cout << "13. Simpan Data Pinjaman" << endl;
-    cout << "14. Keluar Program" << endl;
+    cout << "7. Atur Buku Boleh Pinjam" << endl;
+    cout << "8. Pulihkan Data Buku" << endl;
+    cout << "9. Cari Nama Buku" << endl;
+    cout << "10. Tampilkan Data Pinjaman" << endl;
+    cout << "11. Pinjam Buku" << endl;
+    cout << "12. Kembalikan Buku" << endl;
+    cout << "13. Simpan Data Buku" << endl;
+    cout << "14. Simpan Data Pinjaman" << endl;
+    cout << "15. Keluar Program" << endl;
     
     do {
         cout << "Masukkan pilihan: ";
@@ -101,34 +103,37 @@ int main() {
             setDilarangPinjam(buku, jumlahData);
             
         } else if(pilihan == 7){
-            pulihkanDataBuku(buku, jumlahData, jumlahBukuTerhapus);
+            setBolehPinjam(buku, jumlahData);
             
         } else if(pilihan == 8){
-            cariNamaBuku(buku, jumlahData);
+            pulihkanDataBuku(buku, jumlahData, jumlahBukuTerhapus);
             
         } else if(pilihan == 9){
-            tampilkanDataPinjaman(buku, jumlahData, pinjaman, jumlahPinjaman);
+            cariNamaBuku(buku, jumlahData);
             
         } else if(pilihan == 10){
-            pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
+            tampilkanDataPinjaman(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 11){
+            pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
+            
+        } else if(pilihan == 12){
             kembalikanBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
 
-        } else if(pilihan == 12){
+        } else if(pilihan == 13){
             simpanDataBuku(buku, jumlahData);
             
-        } else if(pilihan == 13){
+        } else if(pilihan == 14){
             simpanDataPinjaman(pinjaman, jumlahPinjaman);            
             
-        } else if(pilihan == 14){
+        } else if(pilihan == 15){
             cout << "\nTerima kasih!" << endl;
 
         } else {
             cout << "Pilihan tidak tersedia" << endl;
         }
         
-    } while (pilihan != 14);    
+    } while (pilihan != 15);    
     
     simpanDataBuku(buku, jumlahData);
     simpanDataPinjaman(pinjaman, jumlahPinjaman);                
@@ -481,6 +486,26 @@ void setDilarangPinjam(Buku buku[], int &jumlahData) {
                 cout << "Buku dengan ID " << idBuku << " berhasil di set tidak boleh dipinjam!" << endl;
                 return;
             } else {
+               cout << "Operasi dibatalkan!" << endl;
+               return;
+            }
+        }
+    }
+    cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
+}
+
+void setBolehPinjam(Buku buku[], int &jumlahData) {
+    string idBuku;
+    cout << "Masukkan ID buku yang ingin di set boleh dipinjam: ";
+    getline(cin, idBuku);
+
+    for(int i = 0; i < jumlahData; i++) {
+        if(buku[i].id == idBuku && buku[i].dihapus == false) {
+            char konfirmasi;
+            cout << "Apakah Anda yakin? (y/n): ";
+            cin >> konfirmasi;
+            cin.ignore();
+            if(konfirmasi == 'y' || konfirmasi == 'Y') {
                 if(buku[i].bolehDipinjam == true) {
                     cout << "Buku dengan ID " << idBuku << " dari awal sudah boleh dipinjam!" << endl;
                     return;
@@ -489,11 +514,15 @@ void setDilarangPinjam(Buku buku[], int &jumlahData) {
                 buku[i].bolehDipinjam = true;
                 cout << "Buku dengan ID " << idBuku << " berhasil di set boleh dipinjam!" << endl;
                 return;
+            } else {
+                cout << "Operasi dibatalkan!" << endl;
+                return;
             }
         }
     }
     cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
 }
+
 
 void cariNamaBuku(Buku buku[], int &jumlah) {    
     string cariNama;
