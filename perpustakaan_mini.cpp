@@ -476,21 +476,34 @@ void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], in
     cout << "\nDaftar Pinjaman:" << endl;
     cout << left << setw(10) << "ID"
          << setw(10) << "ID Buku"
-         << setw(20) << "Judul Buku"
+         << setw(25) << "Judul Buku"
          << setw(20) << "Nama Peminjam"
          << setw(20) << "Tanggal Pinjam"
          << setw(10) << "Tanggal Kembali" << endl;
 
-    for(int i = 0; i < jumlahBuku; i++) {
-        for(int j = 0; j < jumlahPinjaman; j++) {
-            if(buku[i].id == pinjaman[j].idBuku) {
-                cout << setw(10) << pinjaman[j].id
-                << setw(10) << pinjaman[j].idBuku 
-                << setw(20) << buku[i].judul 
-                << setw(20) << pinjaman[j].namaPeminjam 
-                << setw(20) << pinjaman[j].tanggalPinjam 
-                << setw(10) << pinjaman[j].tanggalKembali << endl;
+         
+    for(int i = 0; i < jumlahPinjaman; i++) {
+        int index = -1;
+        for(int j = 0; j < jumlahBuku; j++) {
+            if(buku[j].id == pinjaman[i].idBuku) {
+                index = j;
+                cout << setw(10) << pinjaman[i].id
+                << setw(10) << pinjaman[i].idBuku 
+                << setw(25) << buku[j].judul 
+                << setw(20) << pinjaman[i].namaPeminjam 
+                << setw(20) << pinjaman[i].tanggalPinjam 
+                << setw(10) << pinjaman[i].tanggalKembali << endl;
+                break;
             }
+        }       
+
+        if(index == -1) {
+            cout << setw(10) << pinjaman[i].id
+                << setw(10) << pinjaman[i].idBuku 
+                << setw(25) << "Buku tidak ditemukan" 
+                << setw(20) << pinjaman[i].namaPeminjam 
+                << setw(20) << pinjaman[i].tanggalPinjam 
+                << setw(10) << pinjaman[i].tanggalKembali << endl;
         }
     }
     
