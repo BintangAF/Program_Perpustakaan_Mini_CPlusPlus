@@ -35,7 +35,7 @@ void tampilDataBuku(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
 void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman);
-void hapusBukuSementara(Buku buku[], int &jumlahData);
+void setDilarangPinjam(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 void pulihkanDataBuku(Buku buku[], int &jumlahBuku);
 
@@ -64,7 +64,7 @@ int main() {
     cout << "2. Tambahkan Buku" << endl;
     cout << "3. Edit Buku" << endl;
     cout << "4. Hapus Buku" << endl;
-    cout << "5. Hapus Buku Sementara" << endl;
+    cout << "5. Atur Buku Dilarang Pinjam" << endl;
     cout << "6. Pulihkan Data Buku" << endl;
     cout << "7. Cari Nama Buku" << endl;
     cout << "8. Tampilkan Data Pinjaman" << endl;
@@ -92,7 +92,7 @@ int main() {
             hapusBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 5){
-            hapusBukuSementara(buku, jumlahData);
+            setDilarangPinjam(buku, jumlahData);
             
         } else if(pilihan == 6){
             pulihkanDataBuku(buku, jumlahData);
@@ -396,20 +396,20 @@ void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPin
     cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
 }
 
-void hapusBukuSementara(Buku buku[], int &jumlahData) {
+void setDilarangPinjam(Buku buku[], int &jumlahData) {
     string idBuku;
-    cout << "Masukkan ID buku yang ingin dihapus sementara: ";
+    cout << "Masukkan ID buku yang ingin di set tidak boleh dipinjam: ";
     getline(cin, idBuku);
 
     for(int i = 0; i < jumlahData; i++) {
-        if(buku[i].id == idBuku) {
+        if(buku[i].id == idBuku && buku[i].dihapus == false) {
             char konfirmasi;
-            cout << "Apakah Anda yakin ingin menghapus buku ini sementara? (y/n): ";
+            cout << "Apakah Anda yakin? (y/n): ";
             cin >> konfirmasi;
             cin.ignore();
             if(konfirmasi == 'y' || konfirmasi == 'Y') {
-                buku[i].dihapus = true;
-                cout << "Buku dengan ID " << idBuku << " berhasil dihapus sementara!" << endl;
+                buku[i].bolehDipinjam = false;
+                cout << "Buku dengan ID " << idBuku << " berhasil di set tidak boleh dipinjam!" << endl;
                 return;
             } else {
                 cout << "Operasi dibatalkan!" << endl;
