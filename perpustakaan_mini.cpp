@@ -426,7 +426,7 @@ void tampilDataBukuYangDihapus(Buku buku[], int jumlahBuku) {
 
     }
 
-    cout << "\nDaftar Buku:" << endl;
+    cout << "\nDaftar Buku yang Dihapus:" << endl;
     cout << left << setw(10) << "ID"
          << setw(20) << "Judul"
          << setw(20) << "Pengarang"
