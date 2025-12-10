@@ -32,7 +32,7 @@ void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah);
 
 void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], int &jumlahPinjaman);
 void tampilDataBuku(Buku buku[], int jumlahdata);
-void tampilDataBukuYangDihapus(Buku buku[], int jumlahBuku);
+void tampilDataBukuYangDihapus(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
 void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman);
@@ -94,7 +94,7 @@ int main() {
             hapusBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 5){
-            tampilDataBukuYangDihapus(buku, jumlahData);
+            tampilDataBukuYangDihapus(buku, jumlahData, jumlahBukuTerhapus);
             
         } else if(pilihan == 6){
             setDilarangPinjam(buku, jumlahData);
@@ -419,8 +419,8 @@ void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPin
     cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
 }
 
-void tampilDataBukuYangDihapus(Buku buku[], int jumlahBuku) {
-    if(jumlahBuku == 0){
+void tampilDataBukuYangDihapus(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus) {
+    if(jumlahBukuTerhapus == 0){
         cout << "tidak ada data buku!" << endl;
         return;
 
@@ -436,7 +436,7 @@ void tampilDataBukuYangDihapus(Buku buku[], int jumlahBuku) {
          << setw(10) << "Stok"
          << setw(10) << "Status" << endl;
 
-    for(int i=0; i < jumlahBuku; i++){
+    for(int i = 0; i < jumlahBuku; i++){
         if(buku[i].dihapus == true){
             cout << setw(10) << buku[i].id
              << setw(20) << buku[i].judul
