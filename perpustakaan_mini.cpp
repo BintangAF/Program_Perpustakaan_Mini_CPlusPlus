@@ -244,7 +244,7 @@ void tampilDataBuku(Buku buku[], int jumlahdata) {
              << setw(15) << buku[i].genre
              << setw(10) << buku[i].stok;
              string status = (buku[i].dihapus == 0) ? "Tersedia" : "Dihapus";
-             cout << setw(10) << status  << endl;
+             cout << setw(10) << status << endl;
     }
 }
 
