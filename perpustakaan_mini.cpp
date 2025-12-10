@@ -255,7 +255,7 @@ void tampilDataBuku(Buku buku[], int jumlahdata) {
          << setw(10) << "Tahun"
          << setw(15) << "Genre"
          << setw(10) << "Stok"
-         << setw(10) << "Status" << endl;
+         << setw(15) << "Status" << endl;
 
     for(int i=0; i<jumlahdata; i++){
         cout << setw(10) << buku[i].id
@@ -265,8 +265,8 @@ void tampilDataBuku(Buku buku[], int jumlahdata) {
              << setw(10) << buku[i].tahunTerbit
              << setw(15) << buku[i].genre
              << setw(10) << buku[i].stok;
-             string status = (buku[i].bolehDipinjam == 1) ? "Boleh" : "Tidak Boleh";
-             cout << setw(10) << status << endl;
+             string status = (buku[i].bolehDipinjam == 1) ? "Boleh dipinjam" : "Tidak Boleh";
+             cout << setw(15) << status << endl;
     }
 }
 
