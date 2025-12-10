@@ -330,21 +330,21 @@ void editBuku(Buku buku[], int &jumlahData) {
 }
 
 void hapusBuku(Buku buku[], int &jumlahData) {
-    string judulBuku;
-    cout << "Masukkan judul buku yang ingin dihapus: ";
-    getline(cin, judulBuku);
+    string idBuku;
+    cout << "Masukkan ID buku yang ingin dihapus: ";
+    getline(cin, idBuku);
 
     for(int i = 0; i < jumlahData; i++) {
-        if(buku[i].judul == judulBuku) {
+        if(buku[i].id == idBuku) {
             for(int j = i; j < jumlahData - 1; j++) {
                 buku[j] = buku[j + 1];
             }
             jumlahData--;
-            cout << "Buku " << judulBuku << " berhasil dihapus!" << endl;
+            cout << "Buku dengan ID " << idBuku << " berhasil dihapus!" << endl;
             return;
         }
     }
-    cout << "Buku " << judulBuku << " yang dicari tidak ditemukan!" << endl;
+    cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
 }
 
 void cariNamaBuku(Buku buku[], int &jumlah) {    
