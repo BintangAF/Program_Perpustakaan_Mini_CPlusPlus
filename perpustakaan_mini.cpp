@@ -54,6 +54,7 @@ int main() {
     Pinjaman pinjaman[100];
     int jumlahData = 0;
     int jumlahPinjaman = 0;
+    int jumlahBukuTerhapus = 0;
 
     loadDataBuku(buku, jumlahData);
     loadDataPinjaman(pinjaman, jumlahPinjaman);
