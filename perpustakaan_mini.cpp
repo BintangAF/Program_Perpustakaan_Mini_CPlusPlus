@@ -151,7 +151,7 @@ void loadDataBuku(Buku buku[], int &jumlah) {
         getline(file, buku[jumlah].penerbit, '|');
         getline(file, tahunStr, '|');        
         getline(file, buku[jumlah].genre, '|');
-        getline(file, stokStr, "|");                        
+        getline(file, stokStr, '|');                        
         getline(file, bolehDipinjamStr, '|');        
         getline(file, diHapusStr);        
 
