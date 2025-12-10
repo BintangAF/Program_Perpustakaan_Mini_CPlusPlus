@@ -34,6 +34,7 @@ void tampilDataBuku(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
 void hapusBuku(Buku buku[], int &jumlahData);
+void hapusBukuSementara(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
 
 void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
@@ -61,13 +62,14 @@ int main() {
     cout << "2. Tambahkan Buku" << endl;
     cout << "3. Edit Buku" << endl;
     cout << "4. Hapus Buku" << endl;
-    cout << "5. Cari Nama Buku" << endl;
-    cout << "6. Tampilkan Data Pinjaman" << endl;
-    cout << "7. Pinjam Buku" << endl;
-    cout << "8. Kembalikan Buku" << endl;
-    cout << "9. Simpan Data Buku" << endl;
-    cout << "10. Simpan Data Pinjaman" << endl;
-    cout << "11. Keluar Program" << endl;
+    cout << "5. Hapus Buku Sementara" << endl;
+    cout << "6. Cari Nama Buku" << endl;
+    cout << "7. Tampilkan Data Pinjaman" << endl;
+    cout << "8. Pinjam Buku" << endl;
+    cout << "9. Kembalikan Buku" << endl;
+    cout << "10. Simpan Data Buku" << endl;
+    cout << "11. Simpan Data Pinjaman" << endl;
+    cout << "12. Keluar Program" << endl;
     
     do {
         cout << "Masukkan pilihan: ";
@@ -87,31 +89,34 @@ int main() {
             hapusBuku(buku, jumlahData);
             
         } else if(pilihan == 5){
-            cariNamaBuku(buku, jumlahData);
+            hapusBukuSementara(buku, jumlahData);
             
         } else if(pilihan == 6){
-            tampilkanDataPinjaman(buku, jumlahData, pinjaman, jumlahPinjaman);
+            cariNamaBuku(buku, jumlahData);
             
         } else if(pilihan == 7){
-            pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
+            tampilkanDataPinjaman(buku, jumlahData, pinjaman, jumlahPinjaman);
             
         } else if(pilihan == 8){
+            pinjamBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
+            
+        } else if(pilihan == 9){
             kembalikanBuku(buku, jumlahData, pinjaman, jumlahPinjaman);
 
-        } else if(pilihan == 9){
+        } else if(pilihan == 10){
             simpanDataBuku(buku, jumlahData);
             
-        } else if(pilihan == 10){
+        } else if(pilihan == 11){
             simpanDataPinjaman(pinjaman, jumlahPinjaman);            
             
-        } else if(pilihan == 11){
+        } else if(pilihan == 12){
             cout << "\nTerima kasih!" << endl;
 
         } else {
             cout << "Pilihan tidak tersedia" << endl;
         }
         
-    } while (pilihan != 11);    
+    } while (pilihan != 12);    
     
     simpanDataBuku(buku, jumlahData);
     simpanDataPinjaman(pinjaman, jumlahPinjaman);                
@@ -362,6 +367,21 @@ void hapusBuku(Buku buku[], int &jumlahData) {
             }
             jumlahData--;
             cout << "Buku dengan ID " << idBuku << " berhasil dihapus!" << endl;
+            return;
+        }
+    }
+    cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
+}
+
+void hapusBukuSementara(Buku buku[], int &jumlahData) {
+    string idBuku;
+    cout << "Masukkan ID buku yang ingin dihapus sementara: ";
+    getline(cin, idBuku);
+
+    for(int i = 0; i < jumlahData; i++) {
+        if(buku[i].id == idBuku) {
+            buku[i].dihapus = true;
+            cout << "Buku dengan ID " << idBuku << " berhasil dihapus sementara!" << endl;
             return;
         }
     }
