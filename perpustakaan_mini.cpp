@@ -25,7 +25,7 @@ struct Pinjaman {
 };
 
 // Prototype Fungsi
-void loadDataBuku(Buku buku[], int &jumlah);
+void loadDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
 void loadDataPinjaman(Pinjaman pinjaman[], int &jumlahPinjaman);
 void simpanDataBuku(Buku buku[], int &jumlahBuku);
 void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah);
@@ -56,7 +56,7 @@ int main() {
     int jumlahPinjaman = 0;
     int jumlahBukuTerhapus = 0;
 
-    loadDataBuku(buku, jumlahData);
+    loadDataBuku(buku, jumlahData, jumlahBukuTerhapus);
     loadDataPinjaman(pinjaman, jumlahPinjaman);
 
     int pilihan = 0;
@@ -139,7 +139,7 @@ int main() {
 // Inisialisasi Fungsi -------------------------
 
 // Load Data Buku
-void loadDataBuku(Buku buku[], int &jumlah) {
+void loadDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus) {
     ifstream file("data_buku.txt");        
 
     if (!file.is_open()){
@@ -149,24 +149,27 @@ void loadDataBuku(Buku buku[], int &jumlah) {
 
     while (!file.eof()) {        
         string tahunStr, stokStr, bolehDipinjamStr, diHapusStr;
-        getline(file, buku[jumlah].id, '|');
-        if (buku[jumlah].id == "") break;
+        getline(file, buku[jumlahBuku].id, '|');
+        if (buku[jumlahBuku].id == "") break;
 
-        getline(file, buku[jumlah].judul, '|');
-        getline(file, buku[jumlah].pengarang, '|');
-        getline(file, buku[jumlah].penerbit, '|');
+        getline(file, buku[jumlahBuku].judul, '|');
+        getline(file, buku[jumlahBuku].pengarang, '|');
+        getline(file, buku[jumlahBuku].penerbit, '|');
         getline(file, tahunStr, '|');        
-        getline(file, buku[jumlah].genre, '|');
+        getline(file, buku[jumlahBuku].genre, '|');
         getline(file, stokStr, '|');                        
         getline(file, bolehDipinjamStr, '|');        
         getline(file, diHapusStr);        
 
-        buku[jumlah].tahunTerbit = stoi(tahunStr);
-        buku[jumlah].stok = stoi(stokStr);
-        buku[jumlah].bolehDipinjam = stoi(bolehDipinjamStr);
-        buku[jumlah].dihapus = stoi(diHapusStr);                
+        buku[jumlahBuku].tahunTerbit = stoi(tahunStr);
+        buku[jumlahBuku].stok = stoi(stokStr);
+        buku[jumlahBuku].bolehDipinjam = stoi(bolehDipinjamStr);
+        buku[jumlahBuku].dihapus = stoi(diHapusStr);                
 
-        jumlah++;
+        if(buku[jumlahBuku].dihapus == 1) {
+            jumlahBukuTerhapus++;
+        }
+        jumlahBuku++;
     }
 
     file.close();    
