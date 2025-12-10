@@ -12,6 +12,7 @@ struct Buku {
     int tahunTerbit;
     string genre;    
     int stok;
+    bool bolehDipinjam;
     bool dihapus;
 };
 
