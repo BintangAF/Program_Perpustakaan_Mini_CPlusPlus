@@ -12,6 +12,7 @@ struct Buku {
     int tahunTerbit;
     string genre;    
     int stok;
+    bool dihapus;
 };
 
 struct Pinjaman {
@@ -257,7 +258,7 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
     getline(cin, buku->penerbit);
 
     cout << "Masukkan Tahun Terbit: ";
-    cin >> buku->tahunTerbit;
+    cin >> buku->tahunTerbit;    
     cin.ignore();
 
     cout << "Masukkan Genre: ";
