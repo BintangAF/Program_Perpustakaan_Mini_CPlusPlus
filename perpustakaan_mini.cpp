@@ -257,16 +257,18 @@ void tampilDataBuku(Buku buku[], int jumlahdata) {
          << setw(10) << "Stok"
          << setw(15) << "Status" << endl;
 
-    for(int i=0; i<jumlahdata; i++){
-        cout << setw(10) << buku[i].id
-             << setw(20) << buku[i].judul
-             << setw(20) << buku[i].pengarang
-             << setw(20) << buku[i].penerbit
-             << setw(10) << buku[i].tahunTerbit
-             << setw(15) << buku[i].genre
-             << setw(10) << buku[i].stok;
-             string status = (buku[i].bolehDipinjam == 1) ? "Boleh dipinjam" : "Tidak Boleh";
-             cout << setw(15) << status << endl;
+    for(int i = 0; i < jumlahdata; i++){
+        if(buku[i].dihapus == false) {
+            cout << setw(10) << buku[i].id
+                << setw(20) << buku[i].judul
+                << setw(20) << buku[i].pengarang
+                << setw(20) << buku[i].penerbit
+                << setw(10) << buku[i].tahunTerbit
+                << setw(15) << buku[i].genre
+                << setw(10) << buku[i].stok;
+                string status = (buku[i].bolehDipinjam == 1) ? "Boleh dipinjam" : "Tidak Boleh";
+                cout << setw(15) << status << endl;
+        }
     }
 }
 
