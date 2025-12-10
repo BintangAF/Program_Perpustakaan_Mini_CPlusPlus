@@ -382,9 +382,7 @@ void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPin
             cin.ignore();
 
             if(konfirmasi == 'y' || konfirmasi == 'Y') {
-                for(int j = i; j < jumlahData - 1; j++) {
-                    buku[j] = buku[j + 1];
-                }
+                buku[i].dihapus = true;                
                 jumlahData--;
                 cout << "Buku dengan ID " << idBuku << " berhasil dihapus!" << endl;
                 return;
