@@ -362,12 +362,22 @@ void hapusBuku(Buku buku[], int &jumlahData) {
 
     for(int i = 0; i < jumlahData; i++) {
         if(buku[i].id == idBuku) {
-            for(int j = i; j < jumlahData - 1; j++) {
-                buku[j] = buku[j + 1];
+            char konfirmasi;
+            cout << "Anda yakin? (y/n):";
+            cin >> konfirmasi;
+            cin.ignore();
+
+            if(konfirmasi == 'y' || konfirmasi == 'Y') {
+                for(int j = i; j < jumlahData - 1; j++) {
+                    buku[j] = buku[j + 1];
+                }
+                jumlahData--;
+                cout << "Buku dengan ID " << idBuku << " berhasil dihapus!" << endl;
+                return;
+            } else {
+                cout << "Operasi dibatalkan!" << endl;
+                return;
             }
-            jumlahData--;
-            cout << "Buku dengan ID " << idBuku << " berhasil dihapus!" << endl;
-            return;
         }
     }
     cout << "Buku dengan ID " << idBuku << " yang dicari tidak ditemukan!" << endl;
