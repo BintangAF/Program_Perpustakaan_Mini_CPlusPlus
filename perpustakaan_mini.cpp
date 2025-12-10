@@ -282,6 +282,17 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
     cout << "Masukkan Stok Buku: ";
     cin >> buku->stok;
     cin.ignore();
+    
+    char status;
+    cout << "Apakah buku ini boleh dipinjam (y/n): ";
+    cin >> status;
+    cin.ignore();
+
+    if(status == 'y' || status == 'Y') {
+        buku->bolehDipinjam = false;
+    } else {
+        buku->bolehDipinjam = true;
+    }
 
     buku->dihapus = false;
     
