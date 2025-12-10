@@ -472,11 +472,22 @@ void setDilarangPinjam(Buku buku[], int &jumlahData) {
             cin >> konfirmasi;
             cin.ignore();
             if(konfirmasi == 'y' || konfirmasi == 'Y') {
+                if(buku[i].bolehDipinjam == false) {
+                    cout << "Buku dengan ID " << idBuku << " dari awal sudah tidak boleh dipinjam!" << endl;
+                    return;
+                }
+                
                 buku[i].bolehDipinjam = false;
                 cout << "Buku dengan ID " << idBuku << " berhasil di set tidak boleh dipinjam!" << endl;
                 return;
             } else {
-                cout << "Operasi dibatalkan!" << endl;
+                if(buku[i].bolehDipinjam == true) {
+                    cout << "Buku dengan ID " << idBuku << " dari awal sudah boleh dipinjam!" << endl;
+                    return;
+                }
+                
+                buku[i].bolehDipinjam = true;
+                cout << "Buku dengan ID " << idBuku << " berhasil di set boleh dipinjam!" << endl;
                 return;
             }
         }
