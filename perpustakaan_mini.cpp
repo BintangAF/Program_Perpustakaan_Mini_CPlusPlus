@@ -30,7 +30,7 @@ void simpanDataBuku(Buku buku[], int &jumlahBuku);
 void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah);
 
 void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], int &jumlahPinjaman);
-void tampildata(Buku buku[], int jumlahdata);
+void tampilDataBuku(Buku buku[], int jumlahdata);
 void tambahbuku(Buku *buku, int &jumlahdata);
 void editBuku(Buku buku[], int &jumlahData);
 void hapusBuku(Buku buku[], int &jumlahData);
@@ -75,7 +75,7 @@ int main() {
         cin.ignore();
 
         if(pilihan == 1){
-            tampildata(buku, jumlahData);
+            tampilDataBuku(buku, jumlahData);
             
         } else if(pilihan == 2) {
             tambahbuku(&buku[jumlahData], jumlahData);
@@ -218,7 +218,7 @@ void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah) {
     cout << "Data pinjaman telah tersimpan.\n";
 }
 
-void tampildata(Buku buku[], int jumlahdata) {
+void tampilDataBuku(Buku buku[], int jumlahdata) {
     if(jumlahdata == 0){
         cout << "tidak ada data buku!" << endl;
         return;
