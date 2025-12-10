@@ -272,14 +272,14 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
 }
 
 void editBuku(Buku buku[], int &jumlahData) {
-    string cariNama;
-    cout << "Masukkan Nama Buku yang dicari: ";
-    getline(cin, cariNama);    
+    string idBuku;
+    cout << "Masukkan ID Buku yang ingin diedit: ";
+    getline(cin, idBuku);    
     
     int index = -1;
     
     for(int i = 0; i < jumlahData; i++) {
-        if(buku[i].judul.find(cariNama) != string::npos) {
+        if(buku[i].id == idBuku) {
             index = i;
             break;
         }        
@@ -302,26 +302,32 @@ void editBuku(Buku buku[], int &jumlahData) {
 
     string inputBaru;
 
+    cout << "Kosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan judul baru: ";
     getline(cin, inputBaru);
     buku[index].judul = (inputBaru.empty()) ? buku[index].judul : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan pengarang baru: ";
     getline(cin, inputBaru);
     buku[index].pengarang = (inputBaru.empty()) ? buku[index].pengarang : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan penerbit baru: ";
     getline(cin, inputBaru);
     buku[index].penerbit = (inputBaru.empty()) ? buku[index].penerbit : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan tahun terbit baru: ";
     getline(cin, inputBaru);
     buku[index].tahunTerbit = (inputBaru.empty()) ? buku[index].tahunTerbit : stoi(inputBaru);
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan genre baru: ";
     getline(cin, inputBaru);
     buku[index].genre = (inputBaru.empty()) ? buku[index].genre : inputBaru;
     
+    cout << "\nKosongkan jika tidak ingin dirubah" << endl;
     cout << "Masukkan stok baru: ";
     getline(cin, inputBaru);
     buku[index].stok = (inputBaru.empty()) ? buku[index].stok : stoi(inputBaru);
