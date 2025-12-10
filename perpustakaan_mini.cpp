@@ -38,7 +38,7 @@ void editBuku(Buku buku[], int &jumlahData);
 void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman, int &jumlahBukuTerhapus);
 void setDilarangPinjam(Buku buku[], int &jumlahData);
 void cariNamaBuku(Buku buku[], int &jumlah);
-void pulihkanDataBuku(Buku buku[], int &jumlahBuku);
+void pulihkanDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
 
 void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
 void kembalikanBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
@@ -101,7 +101,7 @@ int main() {
             setDilarangPinjam(buku, jumlahData);
             
         } else if(pilihan == 7){
-            pulihkanDataBuku(buku, jumlahData);
+            pulihkanDataBuku(buku, jumlahData, jumlahBukuTerhapus);
             
         } else if(pilihan == 8){
             cariNamaBuku(buku, jumlahData);
@@ -519,7 +519,7 @@ void cariNamaBuku(Buku buku[], int &jumlah) {
     }
 }
 
-void pulihkanDataBuku(Buku buku[], int &jumlahBuku) {
+void pulihkanDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus) {
     string idBuku;
     cout << "Masukkan ID buku ingin dipulihkan: ";
     getline(cin, idBuku);
@@ -529,6 +529,7 @@ void pulihkanDataBuku(Buku buku[], int &jumlahBuku) {
         if(buku[i].id == idBuku) {
             index = i;
             buku[i].dihapus = false;
+            jumlahBukuTerhapus++;
             cout << "Buku dengan ID " << idBuku << " berhasil dipulihkan!" << endl;
             break;
         }
