@@ -296,7 +296,7 @@ void editBuku(Buku buku[], int &jumlahData) {
     int index = -1;
     
     for(int i = 0; i < jumlahData; i++) {
-        if(buku[i].id == idBuku) {
+        if(buku[i].id == idBuku && buku[i].dihapus == false) {
             index = i;
             break;
         }        
