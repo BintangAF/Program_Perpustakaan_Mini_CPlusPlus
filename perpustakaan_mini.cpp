@@ -291,13 +291,13 @@ void editBuku(Buku buku[], int &jumlahData) {
     }
 
     cout << "Buku ditemukan!" << endl;
-    cout << "Data Buku saat ini" << endl;
+    cout << "Data Buku saat ini: " << endl;
     cout << left << setw(10) << "ID"
         << setw(20) << "Judul" 
         << setw(20) << "Pengarang"
         << setw(20) << "Penerbit"
         << setw(20) << "Tahun Terbit"
-        << setw(15) << "Genre"
+        << setw(20) << "Genre"
         << setw(5) << "Stok" << endl;
     
     cout << setw(10) << buku[index].id
@@ -305,7 +305,7 @@ void editBuku(Buku buku[], int &jumlahData) {
         << setw(20) << buku[index].pengarang
         << setw(20) << buku[index].penerbit
         << setw(20) << buku[index].tahunTerbit
-        << setw(15) << buku[index].genre
+        << setw(20) << buku[index].genre
         << setw(5) << buku[index].stok << endl;
 
     string inputBaru;
