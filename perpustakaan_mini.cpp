@@ -457,6 +457,7 @@ void pulihkanDataBuku(Buku buku[], int &jumlahBuku) {
         if(buku[i].id == idBuku) {
             index = i;
             buku[i].dihapus = false;
+            cout << "Buku dengan ID " << idBuku << " berhasil dipulihkan!" << endl;
             break;
         }
     }
