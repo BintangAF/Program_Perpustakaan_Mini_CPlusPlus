@@ -191,7 +191,8 @@ void simpanDataBuku(Buku buku[], int &jumlahBuku) {
              << buku[i].penerbit << "|"
              << buku[i].tahunTerbit << "|"
              << buku[i].genre << "|"
-             << buku[i].stok << endl;
+             << buku[i].stok << "|"
+             << buku[i].dihapus << endl;
     }
 
     file.close();    
