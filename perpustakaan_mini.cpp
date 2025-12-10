@@ -528,7 +528,17 @@ void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjam[], int &jumlahPinj
 
     int index = -1;
     for(int i = 0; i < jumlahData; i++) {
-        if(buku[i].id == idBuku && buku[i].dihapus == false) {            
+        if(buku[i].bolehDipinjam == false) {
+            cout << "Buku " << buku[i].judul << " tidak boleh dipinjam!" << endl;
+            return;
+        }
+
+        if(buku[i].stok < 1) {
+            cout << "Buku " << buku[i].judul << " tidak tersedia!" << endl;
+            return;
+        }
+        
+        if(buku[i].id == idBuku && buku[i].dihapus == false ) {            
             index = i;
             if(buku[i].stok < 1){
                 cout << "Buku " << buku[i].judul << " tidak tersedia!" << endl;
