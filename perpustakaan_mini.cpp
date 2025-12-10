@@ -227,12 +227,13 @@ void tampilDataBuku(Buku buku[], int jumlahdata) {
 
     cout << "\nDaftar Buku:" << endl;
     cout << left << setw(10) << "ID"
-         << setw(20) << "judul"
-         << setw(20) << "pengarang"
-         << setw(20) << "penerbit"
-         << setw(10) << "tahun"
-         << setw(15) << "genre"
-         << setw(5) << "stok" << endl;
+         << setw(20) << "Judul"
+         << setw(20) << "Pengarang"
+         << setw(20) << "Penerbit"
+         << setw(10) << "Tahun"
+         << setw(15) << "Genre"
+         << setw(10) << "Stok"
+         << setw(10) << "Status" << endl;
 
     for(int i=0; i<jumlahdata; i++){
         cout << setw(10) << buku[i].id
@@ -241,7 +242,9 @@ void tampilDataBuku(Buku buku[], int jumlahdata) {
              << setw(20) << buku[i].penerbit
              << setw(10) << buku[i].tahunTerbit
              << setw(15) << buku[i].genre
-             << setw(5) << buku[i].stok << endl;
+             << setw(10) << buku[i].stok;
+             string status = (buku[i].dihapus == 0) ? "Tersedia" : "Dihapus";
+             cout << setw(10) << status  << endl;
     }
 }
 
