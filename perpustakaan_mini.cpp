@@ -25,27 +25,27 @@ struct Pinjaman {
 };
 
 // Prototype Fungsi
-void loadDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
-void loadDataPinjaman(Pinjaman pinjaman[], int &jumlahPinjaman);
-void simpanDataBuku(Buku buku[], int &jumlahBuku);
-void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah);
+void loadDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus); //neo
+void loadDataPinjaman(Pinjaman pinjaman[], int &jumlahPinjaman); // rafino
+void simpanDataBuku(Buku buku[], int &jumlahBuku); //nuril
+void simpanDataPinjaman(Pinjaman pinjaman[], int &jumlah); //rafino
 
-void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], int &jumlahPinjaman);
-void tampilDataBuku(Buku buku[], int jumlahdata);
-void tampilDataBukuYangDihapus(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
-void tambahbuku(Buku *buku, int &jumlahdata);
-void editBuku(Buku buku[], int &jumlahData);
-void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman, int &jumlahBukuTerhapus);
-void setDilarangPinjam(Buku buku[], int &jumlahData);
-void setBolehPinjam(Buku buku[], int &jumlahData);
-void cariNamaBuku(Buku buku[], int &jumlah);
-void pulihkanDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus);
+void tampilkanDataPinjaman(Buku buku[], int &jumlahBuku, Pinjaman pinjaman[], int &jumlahPinjaman); //bintang
+void tampilDataBuku(Buku buku[], int jumlahdata); //rafino
+void tampilDataBukuYangDihapus(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus); //nuril
+void tambahbuku(Buku *buku, int &jumlahdata); //rafino
+void editBuku(Buku buku[], int &jumlahData); //nuril
+void hapusBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjaman, int &jumlahBukuTerhapus); //nuril
+void setDilarangPinjam(Buku buku[], int &jumlahData); //bintang
+void setBolehPinjam(Buku buku[], int &jumlahData); //bintang
+void cariNamaBuku(Buku buku[], int &jumlah); //neo
+void pulihkanDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus); //bintang
 
-void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
-void kembalikanBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam);
+void pinjamBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam); //bintang
+void kembalikanBuku(Buku buku[], int &jumlahData, Pinjaman pinjaman[], int &jumlahPinjam); //bintang
 
-string generateId(int &jumlahData);
-string generateIdPinjaman(int &jumlahPinjaman);
+string generateId(int &jumlahData); //neo
+string generateIdPinjaman(int &jumlahPinjaman); //neo
 
 
 
@@ -310,9 +310,9 @@ void tambahbuku(Buku *buku, int &jumlahdata) {
     cin.ignore();
 
     if(status == 'y' || status == 'Y') {
-        buku->bolehDipinjam = false;
-    } else {
         buku->bolehDipinjam = true;
+    } else {
+        buku->bolehDipinjam = false;
     }
 
     buku->dihapus = false;
@@ -574,7 +574,7 @@ void pulihkanDataBuku(Buku buku[], int &jumlahBuku, int &jumlahBukuTerhapus) {
             
             index = i;
             buku[i].dihapus = false;
-            jumlahBukuTerhapus++;
+            jumlahBukuTerhapus--;
             cout << "Buku dengan ID " << idBuku << " berhasil dipulihkan!" << endl;
             break;
         }
